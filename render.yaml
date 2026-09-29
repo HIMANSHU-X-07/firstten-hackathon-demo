@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: firstten-hackathon-demo
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /healthz
+    envVars:
+      - key: FIRSTTEN_HOST
+        value: 0.0.0.0
+      - key: FIRSTTEN_PUBLIC_DEMO
+        value: "1"
+      - key: FIRSTTEN_SECURE_COOKIES
+        value: "1"
+      - key: FIRSTTEN_DISABLE_BACKGROUND_WORKERS
+        value: "1"
+      - key: FIRSTTEN_OPEN_BROWSER
+        value: "0"
+      - key: FIRSTTEN_DB_PATH
+        value: /tmp/firstten-demo.sqlite3
